@@ -1,0 +1,56 @@
+amcl:
+  ros__parameters:
+    use_sim_time: False
+
+    # Particle filter
+    min_particles: 500
+    max_particles: 2000
+    
+    alpha1: 0.2      # rotation noise from rotation
+    alpha2: 0.2      # rotation noise from translation
+    alpha3: 0.2      # translation noise from translation
+    alpha4: 0.2      # translation noise from rotation
+    alpha5: 0.2      # strafe noise (omni only)
+
+    # Frames
+    base_frame_id: "base_link"
+    odom_frame_id: "odom"
+    global_frame_id: "map"
+
+    # Laser model
+    laser_model_type: "likelihood_field_prob"
+    laser_max_range: 100.0
+    laser_min_range: -1.0
+    max_beams: 60
+    laser_likelihood_max_dist: 2.0
+    scan_topic: scan
+
+    # Global localization (spread particles across entire map on init)
+    pf_err: 0.05
+    pf_z: 0.99
+
+    # Recovery
+    recovery_alpha_slow: 0.0
+    recovery_alpha_fast: 0.0
+
+    # Update thresholds
+    update_min_d: 0.1
+    update_min_a: 0.2
+    resample_interval: 1
+
+    # TF
+    transform_tolerance: 0.5
+    tf_broadcast: true
+
+    # Initial pose (robot starts at origin)
+    set_initial_pose: False
+
+
+    # QoS Settings
+    Reliability: RELIABLE
+    History (Depth): KEEP_LAST (5)
+    Durability: VOLATILE
+    Lifespan: Infinite
+    Deadline: Infinite
+    Liveliness: AUTOMATIC
+    Liveliness lease duration: Infinite
